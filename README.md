@@ -2,6 +2,8 @@
 
 A visually appealing, static landing page for a school, built with HTML, CSS, and JavaScript. This project provides a modern introduction to the school, featuring smooth navigation and interactive elements.
 
+![Uploading Screenshot (120).png…]()
+
 ## Features
 
 - Responsive design for desktop and mobile devices
