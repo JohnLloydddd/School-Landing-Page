@@ -1,0 +1,203 @@
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-image: url(bsu1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Header styling */
+h1 {
+  color: #7b0606;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 90%; /* Ensure it doesn't overflow on small screens */
+}
+
+/* Main container styling */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Subheading styling */
+h2 {
+  color: #7b0606;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #7b0606;
+  display: inline-block;
+  padding-bottom: 5px;
+  text-align: center;
+  width: 100%; /* Ensure it takes full width */
+}
+
+/* Paragraph styling */
+p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table thead th {
+  background-color: #7b0606;
+  color: white;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+table thead th:first-child {
+  background-color: #067b06; /* Teal background */
+  color: #ffffff;
+}
+
+table tbody td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Timestamp styling */
+.timestamp {
+  font-family: 'Courier New', Courier, monospace;
+  color: #555;
+}
+
+/* Container for action buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+#downloadButton, #homeButton {
+  background-color: #7b0606; /* Download: Dark red */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  width: 180px; /* Fixed width for uniform size */
+  text-align: center;
+}
+
+.action-buttons a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.action-buttons a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+#homeButton {
+  background-color: #6c757d; /* Home: Grey */
+}
+
+#downloadButton:hover {
+  background-color: #9c2727; /* Lighter red on hover */
+}
+
+#homeButton:hover {
+  background-color: #5a6268; /* Darker grey on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px; /* Smaller heading */
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px; /* Reduce padding */
+    margin: 10px; /* Reduce margin */
+  }
+
+  h2 {
+    font-size: 20px; /* Smaller subheading */
+  }
+
+  p {
+    font-size: 14px; /* Smaller paragraph text */
+  }
+
+  table {
+    font-size: 14px; /* Smaller table text */
+  }
+
+  table thead th, table tbody td {
+    padding: 8px; /* Reduce padding in table cells */
+  }
+
+  #downloadButton, #homeButton {
+    width: 150px; /* Smaller buttons */
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px; /* Even smaller heading */
+  }
+
+  .container {
+    padding: 10px; /* Minimal padding */
+    margin: 5px; /* Minimal margin */
+  }
+
+  h2 {
+    font-size: 18px; /* Smaller subheading */
+  }
+
+  p {
+    font-size: 12px; /* Smaller paragraph text */
+  }
+
+  table {
+    font-size: 12px; /* Smaller table text */
+  }
+
+  table thead th, table tbody td {
+    padding: 6px; /* Minimal padding in table cells */
+  }
+
+  #downloadButton, #homeButton {
+    width: 120px; /* Smaller buttons */
+    font-size: 12px;
+  }
+}
+
+/* Hide buttons when printing */
+@media print {
+  #downloadButton, #homeButton {
+    display: none;
+  }
+}

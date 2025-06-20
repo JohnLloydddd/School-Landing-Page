@@ -1,0 +1,154 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: url("../images/bsu1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* Add padding for smaller screens */
+}
+
+/* Overlay to enhance readability */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+}
+
+/* Container */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Adjusted for smaller screens */
+    max-width: 800px; /* Maximum width for larger screens */
+    text-align: center;
+}
+
+/* Header */
+h1 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 24px;
+}
+
+/* Success Message */
+#success-message {
+    display: none;
+    color: #27ae60;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #eafaf1;
+    border-radius: 5px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0056b3;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #ecf0f1;
+}
+
+/* Buttons */
+button {
+    margin-top: 5px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 100%; /* Full width for smaller screens */
+    max-width: 225px; /* Maximum width for larger screens */
+}
+
+/* Delete Button */
+.delete-btn {
+    background-color: #c82333;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Return Button */
+.return-btn {
+    background-color: #0056b3;
+    color: white;
+}
+
+.return-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Wider on smaller screens */
+        padding: 20px; /* Reduce padding */
+    }
+
+    h1 {
+        font-size: 20px; /* Smaller heading */
+    }
+
+    th, td {
+        padding: 10px; /* Reduce padding in table cells */
+    }
+
+    button {
+        font-size: 14px; /* Smaller button text */
+        padding: 10px 15px; /* Smaller padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%; /* Full width on very small screens */
+        border-radius: 25; /* Remove border radius for full-width effect */
+    }
+
+    h1 {
+        font-size: 18px; /* Even smaller heading */
+    }
+
+    th, td {
+        padding: 8px; /* Minimal padding in table cells */
+        font-size: 14px; /* Smaller font size for table content */
+    }
+
+    button {
+        font-size: 12px; /* Smaller button text */
+        padding: 8px 12px; /* Minimal padding */
+    }
+}

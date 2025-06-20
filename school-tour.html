@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="andrel.css">
+    <title>Visual School Tour</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"><span class="multiple-text"></span></a>
+        <i class="bx bx-menu" id="menu-icon"></i>
+        <nav class="navbar">
+          <a href="project.html">Home</a>
+          <a href="project.html#mission-vision"> Mission and Vision</a>
+          
+          
+          <a href="project.html#developers">Developers </a>
+          <a href="good.html">Organizational Chart</a>
+          <a href="school-tour.html">Visual School Tour</a>
+          <i class="bx bx-search" id="search-icon"></i>
+          
+        </nav>
+        
+      </header>
+      <div class="search-bar-container">
+        <div class="search-bar">
+          <input type="text" placeholder="Search...">
+          <button class="search-btn">Search</button>
+        </div>
+      </div>
+    <section>
+    <h1>INTERACTIVE SCHOOL MAP</h1>
+    <img src ="mapa.jpg" alt = "Bulsu Bustos Map" usemap="#workmap">
+    <map name = "workmap">
+        <!--B-->
+        <area shape="rect" coords="307, 151, 380, 210" data-type="video" data-video="Videos/MULTI-PURP.mp4" title="MULTI-PURPOSE BUILDING">
+
+        <!--C-->
+        <area shape="rect" coords="388, 171, 435, 205" data-type="video" data-video="Videos/FOOD TECH.mp4" title="FOOD TECHNOLOGY ROOM/LABORATORY">
+
+        <!--G-->
+        <area shape="rect" coords="440, 170, 490, 209" data-type="video" data-video="Videos/INFIRMARY.mp4"title="INFIRMARY">
+
+        <!--E-->
+        <area shape="rect" coords="278, 112, 291, 127" data-type="image" data-image="Images/locker room.jpg" title="GUARD HOUSE">
+
+        <!--F-->
+        <area shape="rect" coords="279, 139, 294, 153" data-type="image" data-image="Images/guard house.jpg" title = "GUARD HOUSE LOCKER ROOM">
+
+        <!--N-->
+        <area shape="rect" coords="307, 31, 347, 75" data-type="image" data-image="Images/water tank.jpg" title = "WATER TANK">
+
+        <!--L-->
+        <area shape="rect" coords="861, 407, 918, 488" data-type="video" data-video="Videos/VERMICOMPOST UNIT(1).mp4" title = "EVACUATION AREA">
+
+        <!--M-->
+        <area shape="rect" coords="462, 107, 483, 129" data-type="video" data-video="Videos/PARKING AREA.mp4" title = "PARKING AREA">
+
+        <!--I-->
+        <area shape="poly" coords="703, 295, 722, 304, 707, 333, 689, 327" data-type="video" data-video="Videos/FOOD STALLS.mp4" title = "FOOD STALLS">
+
+        <!--National Road-->
+        <area shape="poly" coords="109, 371, 219, 7, 273, 5, 283, 397, 257, 397, 243, 101, 231, 92, 217, 101, 131, 379" data-type="video" data-video="Videos/NATIONAL ROAD.mp4" title="NATIONAL ROAD">
+        
+        <!--H-->
+        <area shape="poly" coords="346, 94, 372, 99, 372, 120, 344, 111" data-type="video" data-video="Videos/STUDY AREA.mp4" title="STUDY AREA">
+
+        <!--A-->
+        <area shape="poly" coords="403, 29, 828, 148, 801, 230, 742, 213, 752, 186, 375, 78, 382, 50, 395, 54" data-type="video" data-video="Videos/PANCHO HALL.mp4" title = "PANCHO HALL">
+
+        <!--D-->
+        <area shape="poly" coords="572, 155, 688, 189, 674, 233, 557, 200" data-type="video" data-video="Videos/ADMIN BUILDING.mp4" title = "ADMINISTRATION BUILDING">
+
+        <!--O-->
+        <area shape="poly" coords="720, 257, 790, 282, 753, 386, 769, 377, 758, 400, 672, 370, 688, 329, 708, 337, 724, 302, 705, 290" data-type="video" data-video="Videos/ACTIVITY CENTER.mp4" title = "ACTIVITY CENTER">
+        
+        <!--P-->
+        <area shape="poly" coords="807, 266, 936, 309, 905, 379, 780, 336" data-type="video" data-video="Videos/VERMICOMPOST UNIT.mp4" title="VERMICOMPOST UNIT">
+        <area shape="poly" coords="1081, 393, 1225, 436, 1193, 509, 1061, 464" data-type="image" data-image="Images/vermicompost.jpg" title="VERMICOMPOST UNIT">
+        
+        <!--K-->
+        <area shape="poly" coords="1018, 190, 1087, 217, 1026, 340, 956, 314" data-type="video" data-video="Videos/CBA BUILDING.mp4" title="CBA BUILDING">
+        <area shape="poly" coords="1168, 243, 1238, 272, 1173, 396, 1103, 368" data-type="image" data-image="Images/CBA BUILDING.jpg" title="CBA BUILDING">
+    </map>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="contentModal">
+        <button class="close-btn" id="closeBtn">Close</button>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <script>
+        const areas = document.querySelectorAll("area");
+        const overlay = document.getElementById("overlay");
+        const modal = document.getElementById("contentModal");
+        const modalContent = document.getElementById("modalContent");
+        const closeBtn = document.getElementById("closeBtn");
+
+        // Open modal based on data-type
+        areas.forEach(area => {
+    area.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent default action
+        const type = area.getAttribute("data-type");
+        const videoSrc = area.getAttribute("data-video");
+        const imageContent = area.getAttribute("data-image");
+
+        // Clear previous content and ensure consistent modal dimensions
+        modalContent.innerHTML = "";
+        modalContent.style.display = "flex"; // Ensure flex layout is applied
+        modalContent.style.justifyContent = "center";
+        modalContent.style.alignItems = "center";
+
+        if (type === "video" && videoSrc) {
+            const video = document.createElement("video");
+            video.src = videoSrc;
+            video.style.width = "100%";
+            video.style.maxWidth = "90%";
+            video.style.maxHeight = "90%";
+            video.autoplay = true;
+            video.muted = true;
+            modalContent.appendChild(video);
+        } else if (type === "image" && imageContent) {
+            const img = document.createElement("img");
+            img.src = imageContent;
+            img.alt = "Map Content";
+            img.style.width = "auto";
+            img.style.maxWidth = "90%";
+            img.style.maxHeight = "90%";
+            img.style.margin = "auto";
+            modalContent.appendChild(img);
+        }
+
+        modal.style.display = "block";
+        overlay.style.display = "block";
+    });
+});
+
+        // Close modal
+        closeBtn.addEventListener("click", () => {
+            closeModal();
+        });
+
+        overlay.addEventListener("click", () => {
+            closeModal();
+        });
+
+        function closeModal() {
+            modal.style.display = "none"; // Hide the modal
+            overlay.style.display = "none"; // Hide the overlay
+            const video = modalContent.querySelector("video");
+            if (video) {
+                video.pause(); // Pause the video if it exists
+                video.currentTime = 0; // Reset the video to the start
+            }
+        }
+    </script>
+
+    <div class="backgroundRectangle">
+        <p style="font-size: 250%;"><strong>LEGENDS</strong></p>
+        <div class="hobby-container">
+            <ul>
+                <li><span class="letter">A</span> - PANCHO HALL</li>
+                <li><span class="letter">B</span> - MULTI-PURPOSE BUILDING</li>
+                <li><span class="letter">C</span> - FOOD TECHNOLOGY ROOM/LABORATORY</li>
+                <li><span class="letter">D</span> - ADMINISTRATION BUILDING</li>
+                <li><span class="letter">E</span> - GUARD HOUSE</li>
+                <li><span class="letter">F</span> - GUARD HOUSE LOCKER ROOM</li>
+                <li><span class="letter">G</span> - INFIRMARY</li>
+                <li><span class="letter">H</span> - STUDY AREA</li>
+                <li><span class="letter">I</span> - FOOD STALLS</li>
+                <li><span class="letter">J</span> - MULTI-PURPOSE COVERED COURT</li>
+                <li><span class="letter">K</span> - CBA BUILDING</li>
+                <li><span class="letter">L</span> - EVACUATION AREA</li>
+                <li><span class="letter">M</span> - PARKING AREA</li>
+                <li><span class="letter">N</span> - WATER TANK</li>
+                <li><span class="letter">O</span> - ACTIVITY CENTER</li>
+                <li><span class="letter">P</span> - VERMICOMPOST UNIT</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script src="andrel.js"></script>
+</body>
+</html>
